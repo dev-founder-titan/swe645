@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- web.xml defines mappings between URL paths and the servlets that handle requests with those paths -->
+<!-- It also parses pages as homepage based on the list given in welcome-list tag -->
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd" id="WebApp_ID" version="3.1">
+  <display-name>mypart2project</display-name>
+  <welcome-file-list>
+    <welcome-file>SurveyForm.html</welcome-file>
+  </welcome-file-list>
+</web-app>

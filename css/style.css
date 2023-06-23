@@ -1,0 +1,97 @@
+body {font-family: "Times New Roman", Georgia, Serif;
+        background-image: bg.jpg;
+        background-color: azure
+      }
+      p{
+        font-family: "Playfair Display";
+        letter-spacing: 5px;
+  text-align: center;
+  color: #006633;
+  box-shadow: 5px 10px #888888;
+      }
+h1, h2, h3, h4, h5, h6 {
+  font-family: "Playfair Display";
+  letter-spacing: 5px;
+  text-align: center;
+  color: #006633;
+}
+.w3-bar .w3-bar-item{
+  float: right;
+}
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  
+  text-align: left;
+  padding: 8px;
+   border: 1px solid;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+
+      /* Styling the Form (Color, Padding, Shadow) */
+      form {
+        
+        max-width: 500px;
+        margin: 50px auto;
+        padding: 30px 20px;
+        box-shadow: 2px 5px 10px rgba(0, 0, 0, 0.5);
+        background-color: lightsteelblue;
+      }
+
+      /* Styling form-control Class */
+      .form-control {
+        text-align: left;
+        margin-bottom: 25px;
+      }
+
+      /* Styling form-control Label */
+      .form-control label {
+        display: block;
+        margin-bottom: 10px;
+      }
+
+      /* Styling form-control input,
+    select, textarea */
+      .form-control input,
+      .form-control select,
+      .form-control textarea {
+        border: 1px solid #777;
+        border-radius: 2px;
+        font-family: inherit;
+        padding: 10px;
+        display: block;
+        width: 95%;
+      }
+
+      /* Styling form-control Radio
+    button and Checkbox */
+      .form-control input[type="radio"],
+      .form-control input[type="checkbox"] {
+        display: inline-block;
+        width: auto;
+      }
+
+      /* Styling Button */
+      button {
+        background-color: #FFCC33;
+        border: 1px solid #777;
+        border-radius: 2px;
+        font-family: inherit;
+        font-size: 21px;
+        display: block;
+        width: 100%;
+        margin-top: 50px;
+        margin-bottom: 20px;
+        color: #006633;
+      }
+
+button:hover {
+  background-color: orange;
+}

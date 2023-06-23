@@ -1,0 +1,442 @@
+<!-- To create a survey form to be filled by prospective students-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+	<link rel="stylesheet" href="css/style.css">
+    <title>Greeting Page</title>
+    
+  </head>
+ 
+<body>
+
+    <div class="w3-top">
+  <div class="w3-bar w3-white w3-padding w3-card" style="letter-spacing:4px;">
+      <img src="GMURGB.jpg" style="float:left !important;width: 120px;height: 50px;"> 
+    <!-- Right-sided navbar links. Hide them on small screens -->
+    <div style="text-align:right;background-color:#787878;height:50px">
+    
+    <a href="SurveyForm.html" class="w3-bar-item w3-button">Survey Page</a>
+      <a href="CSDepartment.html" class="w3-bar-item w3-button">CS Department</a>
+      <a href="Index.html" class="w3-bar-item w3-button">About</a>
+      
+     
+</div>
+  </div>
+</div>
+<br>
+<br>
+<br>
+<script type="text/javascript" charset="utf-8">
+        function getGreeting() {
+            // get the current hour of the day
+            var now = new Date();
+            var hour = now.getHours();
+
+            // determine the appropriate greeting based on the time of day
+            var greeting;
+            if (hour < 12) {
+                greeting = "Good morning";
+            } else if (hour < 18) {
+                greeting = "Good afternoon";
+            } else {
+                greeting = "Good evening";
+            }
+
+            // get the user's name from the cookie or prompt if not set
+            var name = getCookie("username");
+            if (!name) {
+                name = prompt("Please enter your name:");
+                if (name) {
+                    setCookie("username", name, 1); // set cookie with 1-day expiration
+                }
+            }
+
+            // display the personalized greeting
+            if (name) {
+                document.getElementById("greeting").textContent = greeting + "  " +name + ", Welcome to SWE642 Survey";
+            }
+        }
+
+        function getCookie(name) {
+            var cookies = document.cookie.split("; ");
+            for (var i = 0; i < cookies.length; i++) {
+                var parts = cookies[i].split("=");
+                if (parts[0] === name) {
+                    return decodeURIComponent(parts[1]);
+                }
+            }
+            return null;
+        }
+
+        function setCookie(name, value, days) {
+            var expires = "";
+            if (days) {
+                var date = new Date();
+                date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+                expires = "; expires=" + date.toUTCString();
+            }
+            document.cookie = name + "=" + encodeURIComponent(value) + expires + "; path=/";
+        }
+
+        function resetCookie() {
+            var name = prompt("Please enter your name:");
+            if (name) {
+                setCookie("username", name, 1);
+                location.reload();
+            }
+        }
+        function calculate() {
+  var dataInput = document.getElementById("data");
+  var data = dataInput.value.split(",");
+  
+  if (data.length != 10) {
+    alert("Error: Please enter ten comma separated values.");
+    return;
+  }
+  
+  var sum = 0;
+  var max = 0;
+  
+  for (var i = 0; i < data.length; i++) {
+    var value = parseInt(data[i]);
+    
+    if (isNaN(value) || value < 1 || value > 100) {
+      alert("Error: Please enter valid values between 1 and 100.");
+      return;
+    }
+    
+    sum += value;
+    
+    if (value > max) {
+      max = value;
+    }
+  }
+  
+  var average = sum / data.length;
+  
+  document.getElementById("average").value = average.toFixed(2);
+  document.getElementById("maximum").value = max;
+}
+
+function getCityState() {
+        const zipcode = document.getElementById("zipcode").value;
+        const zipError = document.getElementById("zipError");
+
+        if (zipcode.length > 0) {
+          const xhttp = new XMLHttpRequest();
+          xhttp.onreadystatechange = function () {
+            if (this.readyState == 4 && this.status == 200) {
+              const zipcodes = JSON.parse(this.responseText).zipcodes;
+              const zipData = zipcodes.find((item) => item.zip === zipcode);
+              if (zipData) {
+                document.getElementById("city").innerText = zipData.city;
+                document.getElementById("state").innerText = zipData.state;
+                zipError.innerText = "";
+              } else {
+                zipError.innerText = "Invalid zip";
+                document.getElementById("city").innerText = "";
+                document.getElementById("state").innerText = "";
+              }
+            }
+          };
+          xhttp.open("GET", "zipcodes.json", true);
+          xhttp.send();
+        } else {
+          zipError.innerText = "";
+          document.getElementById("city").innerText = "";
+          document.getElementById("state").innerText = "";
+        }
+      }
+
+
+
+
+function validateForm() {
+  // Get form elements
+  var nameInput = document.getElementById("uname");
+  var addressInput = document.getElementById("address");
+  var city = document.getElementById("city");
+  var state = document.getElementById("state");
+  var zip = document.getElementById("zipcode");
+  var emailInput = document.getElementById("email");
+  var checkboxes = document.querySelectorAll('input[type="checkbox"]:checked');
+  var radioButtons = document.querySelectorAll('input[type="radio"]:checked');
+
+  // Validate name field
+  var name = nameInput.value.trim();
+  if (!/^[a-zA-Z]+$/.test(name)) {
+    alert("Please enter a valid name with alphabets only.");
+    nameInput.value = "";
+    nameInput.focus();
+    return false;
+  }
+
+  // Validate address field
+  var address = addressInput.value.trim();
+  if (!/^[a-zA-Z0-9\s]+$/.test(address)) {
+    alert("Please enter a valid address with alphanumeric, numeric or alphabet characters only.");
+    addressInput.value = "";
+    addressInput.focus();
+    return false;
+  }
+
+//validate city 
+  var name = city.value.trim();
+  if (!/^[a-zA-Z]+$/.test(name)) {
+    alert("Please enter a valid name with alphabets only.");
+    nameInput.value = "";
+    nameInput.focus();
+    return false;
+  }
+
+//validate state 
+  var name = state.value.trim();
+  if (!/^[a-zA-Z]+$/.test(name)) {
+    alert("Please enter a valid name with alphabets only.");
+    nameInput.value = "";
+    nameInput.focus();
+    return false;
+  }
+//validate zipcode 
+  var name = zipcode.value.trim();
+  if (!/^[a-zA-Z]+$/.test(name)) {
+    alert("Please enter a valid name with alphabets only.");
+    nameInput.value = "";
+    nameInput.focus();
+    return false;
+  }
+
+  // Validate email field
+  var email = emailInput.value.trim();
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+    alert("Please enter a valid email address.");
+    emailInput.value = "";
+    emailInput.focus();
+    return false;
+  }
+
+  // Validate checkboxes
+  if (checkboxes.length < 2) {
+    alert("Please select at least two checkboxes.");
+    return false;
+  }
+
+  // Validate radio buttons
+  if (radioButtons.length == 0) {
+    alert("Please select a radio button.");
+    return false;
+  }
+
+  // Form is valid
+  return true;
+}
+
+function resetForm() {
+  var nameInput = document.getElementById("uname");
+  var addressInput = document.getElementById("address");
+  var city = document.getElementById("city");
+  var state = document.getElementById("state");
+  var zip = document.getElementById("zipcode");
+  var emailInput = document.getElementById("email");
+  var checkboxes = document.querySelectorAll('input[type="checkbox"]:checked');
+  var radioButtons = document.querySelectorAll('input[type="radio"]:checked');
+
+  nameInput.innerHTML = "";
+  addressInput.innerHTML="";
+  city.innerHTML="";
+  state.innerHTML="";
+  zip.innerHTML="";
+  emailInput.innerHTML="";
+  checkboxes.checked=false;
+  radioButtons.checked=false;
+}
+
+
+    </script>
+    <body onload="getGreeting()">
+    <h1 id="greeting"></h1>
+    <p>If the name above is not correct, <a href="javascript:resetCookie()">click here</a> to enter your name.</p>
+</body>
+
+<h1><p>GMU Survey Form</p></h1>
+    
+    <!-- Create Form -->
+    <form id="form" autocomplete="on">
+      <!-- Details -->
+      <div class="form-control">
+        <label for="uname">
+          <b>Username</b>
+        </label>
+        <input type="text" placeholder="Enter Username" id="uname" required autofocus>
+      </div>
+      <div class="form-control">
+        <label for="uname">
+          <b>Street Address</b>
+        </label>
+        <input type="text" placeholder="Enter Street address" name="saddress" id="address">
+      </div>
+      
+      <div class="form-control">
+        <label for="zip">
+          <b>Zipcode</b>
+        </label>
+        <input type="text" placeholder="Enter Zipcode" name="zipcode" pattern="[0-9]{5}" id= "zipcode" onblur="getCityState()">
+      </div>
+
+      <span id="zipError" style="color:orange;"></span>
+      
+      
+      <div class="form-control">
+         <label for="City">
+          <b>City</b>
+          <span class="text-danger">*</span>
+          <div id="city"></div>
+        </label>
+        <br>
+      <label for="State">
+      <b>State</b>
+      <span class="text-danger">*</span>
+          <div id="state"></div>
+        </label>
+</span>
+</div>
+      <div class="form-control">
+        <label for="phone">
+
+          <b>Telephone number</b>
+        </label>
+        <input type="tel" id="phone" name="telephone" placeholder="Format:123-456-7890" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required>
+      </div>
+      <div class="form-control">
+        <label for="email" id="label-email">
+          <b>Email</b>
+        </label>
+        <!-- Input Type Email-->
+        <input type="email" id="email" placeholder="Enter your email" required/>
+      </div>
+      <div class="form-control">
+        <label for="url">
+          <b>URL</b>
+        </label>
+        <input type="url" name="url" id="url" placeholder="https://example.com" pattern="https://.*" size="30">
+      </div>
+      <div class="form-control">
+        <label>
+          <b>What did you like the most about the campus</b>
+        </label>
+        <!-- Input Type Radio Button -->
+        <label for="recommed-1">
+          <input type="checkbox" id="recommed-1" name="recommed">Students</input>
+        </label>
+        <label for="recommed-2">
+          <input type="checkbox" id="recommed-2" name="recommed">Location</input>
+        </label>
+        <label for="recommed-3">
+          <input type="checkbox" id="recommed-3" name="recommed">Campus</input>
+        </label>
+        <label for="recommed-4">
+          <input type="checkbox" id="recommed-4" name="recommed">Atmosphere</input>
+        </label>
+        <label for="recommed-5">
+          <input type="checkbox" id="recommed-5" name="recommed">Dorm rooms</input>
+        </label>
+        <label for="recommed-6">
+          <input type="checkbox" id="recommed-6" name="recommed">Sports</input>
+        </label>
+      </div>
+      <div class="form-control">
+        <label>
+          <b>How did you get to know about GMU</b>
+        </label>
+        <!-- Input Type Radio Button -->
+        <label for="recommed-11">
+          <input type="radio" id="recommed-11" name="source">Friends</input>
+        </label>
+        <label for="recommed-12">
+          <input type="radio" id="recommed-12" name="source">Television</input>
+        </label>
+        <label for="recommed-13">
+          <input type="radio" id="recommed-13" name="source">Internet</input>
+        </label>
+        <label for="recommed-14">
+          <input type="radio" id="recommed-14" name="source">Other</input>
+          <input type="text" placeholder="Other Source" name="osource">
+        </label>
+      </div>
+      <div class="form-control">
+        <label for="comment">
+          <b>Any comments or suggestions</b>
+        </label>
+        <!-- multi-line text input control -->
+        <textarea name="comment" id="comment" placeholder="Enter your comment here"></textarea>
+      </div>
+      <div class="form-control">
+        <label for="grad">
+          <b>High-School Graduation Month and year</b> : </label>
+        <input list="months" id="grad" name="grad" placeholder="Choose Graduation month" required>
+        <datalist id="months">
+          <option value="January">
+          <option value="February">
+          <option value="March">
+          <option value="April">
+          <option value="May">
+          <option value="June">
+          <option value="July">
+          <option value="August">
+          <option value="September">
+          <option value="October">
+          <option value="November">
+          <option value="December">
+        </datalist>
+      </div>
+      <div class="form-control">
+        <input type="text" placeholder="Enter your grad year" name="saddress">
+      </div>
+       <div class="form-control">
+      <label for="data">Data:</label>
+      <input type="text" id="data" name="data" onchange="calculate()">
+      <br>
+      <label for="average">Average:</label>
+      <output id="average"></output>
+      <br>
+     <label for="maximum">Maximum:</label>
+     <output id="maximum"></output>
+     </div>
+      <div class="form-control">
+      <label for="role" id="label-role">
+        Will you recommend GMU
+      </label>
+      
+      <!-- Dropdown options -->
+      <select name="role" id="role" required>
+         <option value="">--Please choose an option--</option>
+        <option value="student">Very Likely</option>
+        <option value="intern">Likely </option>
+        <option value="professional">
+          Unlikely
+        </option>
+        
+      </select>
+      <div class="form-control">
+        <label for="data">Raffle:</label>
+        <input type="text" id="raffle" name="raffle" placeholder="Ex: 1,2,3,4,5,6,7,8,9,10">
+      </div>
+    </div>
+      <!-- Multi-line Text Input Control -->
+      <button type="submit" value="Submit" onclick="return validateForm()"> Submit </button>
+      <button type="reset" value="Cancel" onclick="return resetForm()">Cancel</button>
+      <script>
+        window.onload = function() {
+            document.getElementById("uname").focus();
+            getGreeting();
+         
+        }
+        
+    </script>
+    </form>
+    
+  </body>
+</html>
