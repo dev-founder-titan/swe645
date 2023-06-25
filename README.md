@@ -12,7 +12,7 @@ In this project swe645 HW2 has been dockerized and then deployed to self hosted 
 # Rancher Setup:
 1) Spin up EC2 host with atlease t2.medium as rancher consumes more memory it might crash in free tier.
 2) Install docker in EC2 host created for Rancher For this usecase Ubuntu image is used.
-3) Execute: sudo docker run --privileged=true -d --restart=unles-sstopped -p 80:80 -p 443:443 rancher/rancher
+3) Execute: sudo docker run --privileged=true -d --restart=unless-stopped -p 80:80 -p 443:443 rancher/rancher
 ![image](https://github.com/dev-founder-titan/swe645/assets/79055244/e9cb964a-4198-42d9-bb83-812b88166371)
 4) Local cluster is created by default. We cannot schedule our application pods in that as it has taints to it
 5) Create another Ec2 machine with tier t2.medium this will be used as a cluster for deploying application code.
