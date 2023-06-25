@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: surveyform
+  namespace: surveyform
+  labels:
+    app: surveyform
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: surveyform
+  template:
+    metadata:
+      labels:
+        app: surveyform
+    spec:
+      containers:
+      - name: surveyform
+        image: devbravo1996/surveyform:0.1
+        ports:
+        - containerPort: 8080
