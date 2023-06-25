@@ -3,7 +3,8 @@ In this project swe645 HW2 has been dockerized and then deployed to self hosted 
 1) Rancher Node: https://ec2-34-233-228-98.compute-1.amazonaws.com/dashboard/
 2) Application URL: https://ec2-3-222-240-66.compute-1.amazonaws.com/SurveyForm/
 3) Jenkins URL: http://34.228.87.20:8080/
-*** Make Sure that EC2 IP's are whitelisted for communication with each other. ***
+4) Make Sure that EC2 IP's are whitelisted for communication with each other.
+
 # Docker installation Steps:
 1) sudo apt update
 2) sudo apt install docker.io
