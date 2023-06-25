@@ -1,4 +1,4 @@
-![image](https://github.com/dev-founder-titan/swe645/assets/79055244/c3c05cb5-8e49-4e7c-9429-93f62508a8ed)![image](https://github.com/dev-founder-titan/swe645/assets/79055244/e18bb447-e464-4892-894f-1ebc134f51d1)# swe645
+# swe645
 In this project swe645 HW2 has been dockerized and then deployed to self hosted ec2 cluster in aws.
 1) Rancher Node: https://ec2-34-233-228-98.compute-1.amazonaws.com/dashboard/
 2) Application URL: https://ec2-3-222-240-66.compute-1.amazonaws.com/SurveyForm/
