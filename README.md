@@ -13,12 +13,14 @@ In this project swe645 HW2 has been dockerized and then deployed to self hosted 
 1) Spin up EC2 host with atlease t2.medium as rancher consumes more memory it might crash in free tier.
 2) Install docker in EC2 host created for Rancher For this usecase Ubuntu image is used.
 3) Execute: sudo docker run --privileged=true -d --restart=unless-stopped -p 80:80 -p 443:443 rancher/rancher
-![image](https://github.com/dev-founder-titan/swe645/assets/79055244/e9cb964a-4198-42d9-bb83-812b88166371)
-4) Local cluster is created by default. We cannot schedule our application pods in that as it has taints to it
-5) Create another Ec2 machine with tier t2.medium this will be used as a cluster for deploying application code.
-6) In Racher UI navigate to cluster management for creating new cluster. There are various options present We can use different cloud providers or even use an ec2 iam user for managing the cluster. For our use case we have used custom one.
+
+[![image](https://github.com/dev-founder-titan/swe645/assets/79055244/e9cb964a-4198-42d9-bb83-812b88166371)](https://private-user-images.githubusercontent.com/79055244/248559617-e9cb964a-4198-42d9-bb83-812b88166371.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJrZXkiOiJrZXkxIiwiZXhwIjoxNjg4NzUxODQ3LCJuYmYiOjE2ODg3NTE1NDcsInBhdGgiOiIvNzkwNTUyNDQvMjQ4NTU5NjE3LWU5Y2I5NjRhLTQxOTgtNDJkOS1iYjgzLTgxMmI4ODE2NjM3MS5wbmc_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBSVdOSllBWDRDU1ZFSDUzQSUyRjIwMjMwNzA3JTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDIzMDcwN1QxNzM5MDdaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT0wNTU1YzQxMzNmNTkyODI5NDU5ZDJkMjM4YWIyNWYwMTc0ZDg3NmZkZmNkYmNhN2MyNTBlMjgwYThhZWFhZDhlJlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCZhY3Rvcl9pZD0wJmtleV9pZD0wJnJlcG9faWQ9MCJ9.3cs-xq0qlY8ZTdNpM9t85xH9n-SyV8iLERfNre1swXc)
+
+5) Local cluster is created by default. We cannot schedule our application pods in that as it has taints to it
+6) Create another Ec2 machine with tier t2.medium this will be used as a cluster for deploying application code.
+7) In Racher UI navigate to cluster management for creating new cluster. There are various options present We can use different cloud providers or even use an ec2 iam user for managing the cluster. For our use case we have used custom one.
 ![image](https://github.com/dev-founder-titan/swe645/assets/79055244/f837fd01-a333-4814-8971-f778ce194fc8)
-7) In case of custom when the cluster is created in order to make it active we have to register it with the Rancher node which was previously created. For this we have to execute the registration command in new EC2 node provided in Rancher UI. Once this is done cluster will appear as active in 4-5 mins.
+8) In case of custom when the cluster is created in order to make it active we have to register it with the Rancher node which was previously created. For this we have to execute the registration command in new EC2 node provided in Rancher UI. Once this is done cluster will appear as active in 4-5 mins.
 ![image](https://github.com/dev-founder-titan/swe645/assets/79055244/e3163382-dafb-42f4-9ac5-de6e5d37b506)
 
 # Jenkins Setup:
